@@ -20,6 +20,7 @@
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | [`setup.sh`](setup.sh) | Faz o bootstrap do repositório da equipe — verifica pré-requisitos, clona materiais de referência, inicializa `specs/` |
 | [`check.sh`](check.sh) | Executa todos os gates de CI localmente (testes do backend, lint/teste do frontend, Terraform fmt)                      |
+| [`plan-each.sh`](plan-each.sh) | Percorre features em `specs/`, atualiza `.specify/feature.json` e prepara a execução sequencial de `/speckit.plan` |
 
 ## Uso
 
@@ -31,6 +32,15 @@ chmod +x scripts/*.sh
 
 # Antes de cada push
 ./11-scripts/check.sh
+
+# Listar features pendentes de planejamento
+bash ./11-scripts/plan-each.sh --list
+
+# Ativar a próxima feature pendente para rodar /speckit.plan no chat
+bash ./11-scripts/plan-each.sh --next
+
+# Percorrer interativamente todas as features pendentes
+bash ./11-scripts/plan-each.sh
 ```
 
 ## Observações
@@ -38,6 +48,7 @@ chmod +x scripts/*.sh
 - `setup.sh` clona os materiais de referência em `reference/` e cria symlinks para `prototype/` e `infra/`. A pasta `01-arqueologia/legado-sifap/` já vem incluída no kit. Sobrescreva o repositório de origem com `WORKSHOP_REPO=...`.
 - Os symlinks estão no gitignore — eles servem apenas para conveniência local.
 - `check.sh` ignora qualquer verificação cuja pasta ainda não exista (assim ele funciona durante os estágios iniciais).
+- `plan-each.sh` não executa `/speckit.plan` diretamente no shell, porque esse comando pertence ao fluxo de chat do Copilot. Ele apenas prepara a feature ativa e organiza a execução uma por vez.
 ---
 
 ### Continuar a leitura
