@@ -1,0 +1,8 @@
+- Agente de etapa 5 criado: operations.
+- Arquivo do agente: .github/agents/operations.agent.md.
+- Guia do agente criado: 06-agentes-de-estagio/05-operations/README.md.
+- Indice de agentes atualizado para 5 etapas: 06-agentes-de-estagio/README.md.
+- Usuario pediu para nao editar arquivos existentes ao gerar artefatos operacionais.
+- Artefatos novos de operacoes foram criados em pasta dedicada: operacoes/.
+- Arquivos em operacoes/: README.md, glossario-operacoes.md, runbook-semente.md, readme-operacoes-esqueleto.md.
+- Preferencia atual: criar novos arquivos em operacoes/ em vez de alterar docs/ e 01-arqueologia/.
